@@ -23,11 +23,11 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
@@ -212,6 +212,7 @@ final class Manager extends Handler {
           return;
         }
         handleTranslucentActionBar((ViewGroup.MarginLayoutParams) params, activity);
+        handleCustomActionBar((ViewGroup.MarginLayoutParams) params, activity);
 
         activity.addContentView(croutonView, params);
       }
@@ -240,6 +241,16 @@ final class Manager extends Handler {
       });
     }
   }
+
+    private void handleCustomActionBar(ViewGroup.MarginLayoutParams params, Activity activity) {
+        final int actionBarContainerId = Resources.getSystem().getIdentifier("action_bar_container", "id", "android");
+        final View actionBarContainer = activity.findViewById(actionBarContainerId);
+        // The action bar is present: the app is using a Holo theme.
+        if (actionBarContainer != null && activity.getWindow().hasFeature(Window.FEATURE_ACTION_BAR_OVERLAY)) {
+            final ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
+            marginParams.topMargin = actionBarContainer.getBottom();
+        }
+    }
 
   @TargetApi(19)
   private void handleTranslucentActionBar(ViewGroup.MarginLayoutParams params, Activity activity) {
