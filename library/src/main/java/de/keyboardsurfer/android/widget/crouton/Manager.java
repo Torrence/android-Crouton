@@ -435,7 +435,7 @@ final class Manager extends Handler {
       if (Build.VERSION.SDK_INT < 16) {
         eventType = AccessibilityEvent.TYPE_VIEW_FOCUSED;
       } else {
-        eventType = AccessibilityEventCompat.TYPE_ANNOUNCEMENT;
+        eventType = 16384;//AccessibilityEventCompat.TYPE_ANNOUNCEMENT;
       }
 
       // Construct an accessibility event with the minimum recommended
