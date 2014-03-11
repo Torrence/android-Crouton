@@ -23,3 +23,11 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.7.+'
     }
 }
+
+// Global variables
+project.ext {
+    // set deployment variables from gradle.properties that is available in out wiki
+    deploymentUrl = DEPLOYMENT_URL
+    deploymentUsername = DEPLOYMENT_USERNAME
+    deploymentPassword = DEPLOYMENT_PASSWORD
+}
