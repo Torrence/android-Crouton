@@ -32,7 +32,7 @@ uploadArchives {
                 authentication(userName: project.deploymentUsername, password: project.deploymentPassword)
             }
 
-            pom.groupId = 'de.keyboardsurfer.android.widget'
+            pom.groupId = 'de.motain.keyboardsurfer.widget'
             pom.artifactId = 'crouton'
             pom.version = '1.8.3'
         }
