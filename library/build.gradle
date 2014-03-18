@@ -34,7 +34,7 @@ uploadArchives {
 
             pom.groupId = 'de.motain.keyboardsurfer.widget'
             pom.artifactId = 'crouton'
-            pom.version = '1.8.3'
+            pom.version = '1.8.3.3'
         }
     }
 }

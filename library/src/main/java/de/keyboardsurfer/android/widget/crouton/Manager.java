@@ -32,10 +32,12 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.FrameLayout;
+
 import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import de.keyboardsurfer.mobile.app.android.widget.crouton.R;
 
 /**
  * Manages the lifecycle of {@link Crouton}s.
@@ -243,12 +245,15 @@ final class Manager extends Handler {
   }
 
     private void handleCustomActionBar(ViewGroup.MarginLayoutParams params, Activity activity) {
-        final int actionBarContainerId = Resources.getSystem().getIdentifier("action_bar_container", "id", "android");
-        final View actionBarContainer = activity.findViewById(actionBarContainerId);
-        // The action bar is present: the app is using a Holo theme.
-        if (actionBarContainer != null && activity.getWindow().hasFeature(Window.FEATURE_ACTION_BAR_OVERLAY)) {
-            final ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
-            marginParams.topMargin = actionBarContainer.getBottom();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        {
+            final int actionBarContainerId = Resources.getSystem().getIdentifier("action_bar_container", "id", "android");
+            final View actionBarContainer = activity.findViewById(actionBarContainerId);
+            // The action bar is present: the app is using a Holo theme.
+            if (actionBarContainer != null && activity.getWindow().hasFeature(Window.FEATURE_ACTION_BAR_OVERLAY)) {
+                final ViewGroup.MarginLayoutParams marginParams = params;
+                marginParams.topMargin = (int) activity.getResources().getDimension(R.dimen.crouton__action_bar_default_height);
+            }
         }
     }
 
@@ -266,7 +271,7 @@ final class Manager extends Handler {
         // The action bar is present: the app is using a Holo theme.
         if (actionBarContainer != null) {
           final ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
-          marginParams.topMargin = actionBarContainer.getBottom();
+          marginParams.topMargin = (int) activity.getResources().getDimension(R.dimen.crouton__action_bar_default_height);
         }
       }
     }
