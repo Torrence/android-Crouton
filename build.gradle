@@ -20,14 +20,13 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.7.+'
+        classpath 'com.android.tools.build:gradle:0.12.+'
     }
 }
 
-// Global variables
-project.ext {
-    // set deployment variables from gradle.properties that is available in out wiki
-    deploymentUrl = DEPLOYMENT_URL
-    deploymentUsername = DEPLOYMENT_USERNAME
-    deploymentPassword = DEPLOYMENT_PASSWORD
+// set project wide properties and if not available apply defaults
+if (new File('onefootball.properties.gradle').exists()) {
+    apply from: 'onefootball.properties.gradle';
+} else {
+    throw new GradleException('### Mandatory properties file is missing! ###\nPlease check if "onefootball.properties.gradle" and "onefootball.signing.keystore" are in your project root folder. If not you could find them on the project wiki page.')
 }

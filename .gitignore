@@ -1,14 +1,5 @@
-# Copyright: Benjamin Weiss (keyboardsurfer) https://github.com/keyboardsurfer
-# Under CC-BY-SA V3.0 (https://creativecommons.org/licenses/by-sa/3.0/legalcode)
-
 # built application files
-*.apk
 *.ap_
-*.jar
-build
-
-# lint files
-lint.xml
 
 # files for the dex VM
 *.dex
@@ -19,45 +10,36 @@ lint.xml
 # generated files
 bin/
 gen/
-classes/
 build/
-gen-external-apklibs/
 
-# maven output folder
-target
+# used for BB10 conversion
+dist/
 
 # Local configuration file (sdk path, etc)
 local.properties
 
-# Eclipse project files
-.classpath
-.project
-.metadata
-.settings
-
-# IntelliJ files
-.idea
-*.iml
-
-# OSX files
+# Mac thumbnail db
 .DS_Store
 
-# Windows files
-Thumbs.db
-
-# vi swap files
-*.swp
-
-# backup files
-*.bak
-
-#gradle folder
+# Idea con-crucial project files
+*.idea
+*.iws
+*.iml
+.idea
 .gradle
-.gradletasknamecache
+local.properties
 
-#signing config
-signingConfigs.release
-*.keystore
-gradle.properties
+tests/bin/
+tests/gen/
+tests/.settings/
 
-atlassian-ide-plugin.xml
+# Auto generated code from java annotations
+/.apt_generated
+
+# Lint reports
+lint-report.html
+lint-report_files/
+
+# sensitive files not to be committed at any point
+onefootball.signing.keystore
+onefootball.properties.gradle

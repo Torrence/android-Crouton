@@ -21,7 +21,7 @@ dependencies {
 }
 
 android {
-  buildToolsVersion '19.0.3'
+  buildToolsVersion '21.0.2'
   compileSdkVersion 19
 }
 
@@ -32,9 +32,11 @@ uploadArchives {
                 authentication(userName: project.deploymentUsername, password: project.deploymentPassword)
             }
 
-            pom.groupId = 'de.motain.keyboardsurfer.widget'
-            pom.artifactId = 'crouton'
-            pom.version = '1.8.3.3'
+            pom.project {
+            	groupId 'com.onefootball.android'
+            	artifactId 'crouton'
+            	version '1.8.3.3'
+        	}
         }
     }
 }
